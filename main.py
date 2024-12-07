@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine
 from sklearn.model_selection import train_test_split
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer  # Correct import
 from sklearn.metrics.pairwise import cosine_similarity
 import tempfile
 import matplotlib.pyplot as plt
@@ -12,20 +12,19 @@ from PIL import Image
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-import gradio as gr
+import gradio as gr  # Gradio is correctly imported
 
 # Download necessary NLTK data
 nltk.download('stopwords')
 nltk.download('wordnet')
 
-# Database connection details from environment variables
-DB_HOST = os.getenv('DB_HOST')
-DB_PORT = os.getenv('DB_PORT')
-DB_NAME = os.getenv('DB_NAME')
-DB_USER = os.getenv('DB_USER')
-DB_PASSWORD = os.getenv('DB_PASSWORD')
-TABLE_NAME = os.getenv('TABLE_NAME')
-
+# Database connection details
+DB_HOST = os.getenv('DB_HOST', 'localhost')
+DB_PORT = os.getenv('DB_PORT', '5432')
+DB_NAME = os.getenv('DB_NAME', 'anime_db')
+DB_USER = os.getenv('DB_USER', 'postgres')
+DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')
+TABLE_NAME = 'anime'
 
 # Preprocessing function
 stop_words = set(stopwords.words('english'))
